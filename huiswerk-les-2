@@ -1,0 +1,11 @@
+Extend the stock application that was built during the lecture with the following:
+
+Add bought stocks to the portfolio array in StockList
+Display the portfolio array using a new PortfolioItem component
+Display the total portfolio value in euros in the StockList
+Keep in mind the exchange rate between dollars and euros!
+
+Extra challenge:
+
+Add an amount and a sell button to the PortfolioItem and get them working. The user should not be able to sell more than they own.
+Give the user a starting capital of 1.000 euros. When the user buys, the cost should be subtracted, when the user sells, the profit should be added. 
