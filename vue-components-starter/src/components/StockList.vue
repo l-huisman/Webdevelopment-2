@@ -41,7 +41,6 @@ export default {
         price: stock.price,
         amount: amount,
       });
-      console.log(this.portfolio);
     },
   },
   mounted() {
