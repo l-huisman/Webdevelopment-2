@@ -5,7 +5,7 @@
   </div>
   <h1 class="pt-5">Portfolio</h1>
   <div class="row">
-    <PortfolioItem v-for="stock in portfolio" :stock="stock" />
+      <PortfolioItem v-for="stock in portfolio" :stock="stock" :currentPrice="getStockPrice(stock)" />
   </div>
 </template>
 
@@ -50,11 +50,19 @@ export default {
         amount: amount,
       });
     },
+    getStockPrice(stock) {
+      for (let i = 0; i < this.stocks.length; i++) {
+        if (this.stocks[i].name === stock.name) {
+          console.log(this.stocks[i].price);
+          return this.stocks[i].price;
+        }
+      }
+    }
   },
   mounted() {
     setInterval(() => {
       this.updatePrices();
-    }, 1000);
+    }, 500);
   },
 };
 </script>
