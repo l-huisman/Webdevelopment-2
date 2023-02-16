@@ -3,15 +3,21 @@
   <div class="row">
     <StockItem v-for="stock in stocks" :stock="stock" @buy="buyStock" />
   </div>
+  <h1 class="pt-5">Portfolio</h1>
+  <div class="row">
+    <PortfolioItem v-for="stock in portfolio" :stock="stock" />
+  </div>
 </template>
 
 <script>
 import StockItem from "./StockItem.vue";
+import PortfolioItem from "./PortfolioItem.vue";
 
 export default {
   name: "StockList",
   components: {
     StockItem,
+    PortfolioItem,
   },
   data() {
     return {
@@ -35,7 +41,9 @@ export default {
       });
     },
     buyStock(stock, amount) {
-      alert(`Buying ${amount} of ${stock.name}`);
+      if (amount <= 0) {
+        return;
+      }
       this.portfolio.push({
         name: stock.name,
         price: stock.price,
