@@ -1,4 +1,5 @@
-<template><!-- Individual stock in portfolio -->
+<template>
+<!-- Individual stock in portfolio -->
     <div class="col-md-4 mt-4">
         <div class="card">
             <div class="card-body">
@@ -11,6 +12,8 @@
             <div class="card-footer">
                 <span>Amount: {{ stock.amount }}</span>
             </div>
+            <input type="number" v-model="amount">
+            <button class="btn btn-primary" @click="$emit('sell', stock, amount)">Sell</button>
         </div>
     </div>
 <!-- End of individual stock in portfolio --></template>

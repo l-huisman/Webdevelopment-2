@@ -6,7 +6,7 @@
   <h1 class="pt-5">Portfolio</h1>
   <div class="row">
     <PortfolioItem v-for="stock in portfolio" :stock="convertStockToEuro(stock)"
-      :currentPrice="convertToEuro(getPreviousStockPrice(stock))" />
+      :currentPrice="convertToEuro(getPreviousStockPrice(stock))" @sell="sellStock" />
   </div>
 </template>
 
@@ -50,6 +50,21 @@ export default {
         price: stock.price,
         amount: amount,
       });
+    },
+    sellStock(stock, amount){
+      if (amount <= 0 || amount > stock.amount) {
+        alert("Invalid amount must be greater than 0 and less than the amount you own");
+        return;
+      }
+      for (let i = 0; i < this.portfolio.length; i++) {
+        if (this.portfolio[i].name === stock.name) {
+          this.portfolio[i].amount -= amount;
+          if (this.portfolio[i].amount <= 0) {
+            this.portfolio.splice(i, 1);
+          }
+          return;
+        }
+      }
     },
     getPreviousStockPrice(stock) {
       for (let i = 0; i < this.stocks.length; i++) {
