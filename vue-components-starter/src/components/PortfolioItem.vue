@@ -10,7 +10,6 @@
             </div>
             <div class="card-footer">
                 <span>Amount: {{ stock.amount }}</span>
-                {{ showMeStuff() }}
             </div>
         </div>
     </div>
@@ -24,10 +23,7 @@ export default {
         currentPrice: Number
     },
     methods: {
-        showMeStuff() {
-            console.log(this.stock);
-            console.log(this.currentPrice);
-        }
+
     }
 }
 </script>
