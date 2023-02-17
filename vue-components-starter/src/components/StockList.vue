@@ -5,7 +5,8 @@
   </div>
   <h1 class="pt-5">Portfolio</h1>
   <div class="row">
-      <PortfolioItem v-for="stock in portfolio" :stock="stock" :currentPrice="getStockPrice(stock)" />
+    <PortfolioItem v-for="stock in portfolio" :stock="convertStockToEuro(stock)"
+      :currentPrice="convertToEuro(getPreviousStockPrice(stock))" />
   </div>
 </template>
 
@@ -50,22 +51,33 @@ export default {
         amount: amount,
       });
     },
-    getStockPrice(stock) {
+    getPreviousStockPrice(stock) {
       for (let i = 0; i < this.stocks.length; i++) {
         if (this.stocks[i].name === stock.name) {
           return this.stocks[i].price;
         }
       }
-    }
+    },
+    convertStockToEuro(stock) {
+      if (stock.currency === "€")
+        return stock;
+      return {
+        name: stock.name,
+        price: this.convertToEuro(stock.price),
+        currency: "€",
+        amount: stock.amount,
+      };
+    },
+    convertToEuro(price) {
+      return price * 0.94;
+    },
   },
   mounted() {
     setInterval(() => {
       this.updatePrices();
-    }, 500);
+    }, 1000);
   },
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>
