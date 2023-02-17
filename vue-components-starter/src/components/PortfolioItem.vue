@@ -17,7 +17,6 @@
         </div>
     </div>
 <!-- End of individual stock in portfolio --></template>
-
 <script>
 export default {
     name: "PortfolioItem",
