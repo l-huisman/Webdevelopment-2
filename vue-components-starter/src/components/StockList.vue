@@ -53,7 +53,6 @@ export default {
     getStockPrice(stock) {
       for (let i = 0; i < this.stocks.length; i++) {
         if (this.stocks[i].name === stock.name) {
-          console.log(this.stocks[i].price);
           return this.stocks[i].price;
         }
       }

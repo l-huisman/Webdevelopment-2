@@ -4,8 +4,8 @@
             <div class="card-body">
                 {{ stock.name }}
                 <span :class="{
-                    down: stock.price < currentPrice,
-                    up: stock.price > currentPrice,
+                    down: stock.price > currentPrice,
+                    up: stock.price < currentPrice,
                 }">{{ stock.currency }} {{ stock.price.toFixed(4) }} </span>
             </div>
             <div class="card-footer">
